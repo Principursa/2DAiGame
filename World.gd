@@ -83,6 +83,14 @@ func failure_check():
 		restart(Entity.ENEMY)
 	if player_pix.position.x == width:
 		restart(Entity.ENEMY)
+	if enemy_pix.position.y == height:
+		restart(Entity.PLAYER)
+	if enemy_pix.position.y ==  0:
+		restart(Entity.PLAYER)
+	if enemy_pix.position.x == 0:
+		restart(Entity.PLAYER)
+	if enemy_pix.position.x == width:
+		restart(Entity.PLAYER)
 	if grid[player_pix.position] != GridState.ABSENT:
 		restart(Entity.ENEMY)
 	if grid[enemy_pix.position] != GridState.ABSENT:
