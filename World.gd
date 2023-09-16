@@ -58,7 +58,10 @@ func change_gridstate(position,entity):
 		if entity == Entity.PLAYER:
 			grid[position] = GridState.PLAYER
 			environ_grid[position].get_node("Pixelenviron").modulate = Color(1,250,1)
-		else: grid[position] = GridState.ENEMY
+		else: 
+			grid[position] = GridState.ENEMY
+			environ_grid[position].get_Node("Pixelenviron").modulate = Color(250,1,1)
+		
 	
 	
 	
