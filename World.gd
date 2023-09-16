@@ -3,6 +3,7 @@ extends TileMap
 @onready var environ_pixel = load("res://environ_pixel.tscn")
 @onready var player_pixel_pre = load("res://player_pixel.tscn")
 @onready var enemy_pixel_pre = load("res://enemy_pixel.tscn")
+@onready var tick = get_node("Tick")
 var height = 100
 var width = 100
 var base_position = Vector2(0,0)
@@ -45,18 +46,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if gamestate == GameStates.Menu:
-		pass
-	if gamestate == GameStates.Ongoing:
-		var direction = get_player_direction()
-		if direction == player_pix.Direction.UP:
-			player_pix.position.y += -.5
-		if direction == player_pix.Direction.DOWN:
-			player_pix.position.y += .5
-		if direction == player_pix.Direction.LEFT:
-			player_pix.position.x += -.5
-		if direction == player_pix.Direction.RIGHT:
-			player_pix.position.x += .5	
+	pass
 			
 
 func change_state():
@@ -72,7 +62,7 @@ func change_gridstate(position,entity):
 	if grid[position] == GridState.ABSENT:
 		if entity == Entity.PLAYER:
 			grid[position] = GridState.PLAYER
-			environ_grid[position].get_node("Pixelenviron").modulate = Color(196,241,41)
+			environ_grid[position].get_node("Pixelenviron").modulate = Color(1,250,1)
 		else: grid[position] = GridState.ENEMY
 	
 	
@@ -94,3 +84,23 @@ func spawn_entities():
 	
 	
 	
+
+
+func _on_tick_timeout():
+	if gamestate == GameStates.Menu:
+		pass
+	if gamestate == GameStates.Ongoing:
+		var direction = get_player_direction()
+		if direction == player_pix.Direction.UP:
+			player_pix.position.y += -1
+			change_gridstate(player_pix.position, Entity.PLAYER)
+		if direction == player_pix.Direction.DOWN:
+			player_pix.position.y += 1
+			change_gridstate(player_pix.position, Entity.PLAYER)
+		if direction == player_pix.Direction.LEFT:
+			player_pix.position.x += -1
+			change_gridstate(player_pix.position, Entity.PLAYER)
+		if direction == player_pix.Direction.RIGHT:
+			player_pix.position.x += 1	
+			change_gridstate(player_pix.position, Entity.PLAYER)
+		

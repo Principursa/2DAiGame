@@ -14,3 +14,9 @@ script = ExtResource("1_3lm0g")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(50, 46)
 zoom = Vector2(6, 6)
+
+[node name="Tick" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[connection signal="timeout" from="Tick" to="TileMap" method="_on_tick_timeout"]
