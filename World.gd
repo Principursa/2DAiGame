@@ -4,6 +4,8 @@ extends TileMap
 @onready var player_pixel_pre = load("res://player_pixel.tscn")
 @onready var enemy_pixel_pre = load("res://enemy_pixel.tscn")
 @onready var tick = get_node("../Tick")
+@onready var player_score_label = get_node("../Control").get_node("%P_Score")
+@onready var enemy_score_label = get_node("../Control").get_node("%E_Score")
 var height = 100
 var width = 100
 var base_position = Vector2(0,0)
@@ -14,7 +16,6 @@ enum GridState {
 	PLAYER,
 	ENEMY
 }
-
 enum Entity {
 	PLAYER,
 	ENEMY
@@ -81,9 +82,11 @@ func restart(entity: Entity):
 	player_pix.queue_free()
 	if entity == Entity.PLAYER:
 		player_pix.score += 1
+		player_score_label.update_score(player_pix.score)
 
 	if entity == Entity.ENEMY:
 		enemy_pix.score += 1 
+		enemy_score_label.update_score(enemy_pix.score)
 
 	clear_grid()
 	spawn_entities()

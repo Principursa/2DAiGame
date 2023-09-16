@@ -1,18 +1,43 @@
-[gd_scene format=3 uid="uid://c1vqg2vqcwo4j"]
+[gd_scene load_steps=3 format=3 uid="uid://c1vqg2vqcwo4j"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" path="res://P_Score.gd" id="1_7k7re"]
+[ext_resource type="Script" path="res://E_Score.gd" id="2_rtwm6"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="Start_UI" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="Start_UI"]
-anchors_preset = 14
-anchor_top = 0.5
+[node name="MarginContainer" type="HBoxContainer" parent="Start_UI"]
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -15.5
-offset_bottom = 15.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-metadata/_edit_use_anchors_ = true
+
+[node name="PlayerPanel" type="PanelContainer" parent="Start_UI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="P_Score" type="Label" parent="Start_UI/MarginContainer/PlayerPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Player_Score:     "
+script = ExtResource("1_7k7re")
+
+[node name="EnemyPanel" type="PanelContainer" parent="Start_UI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="E_Score" type="Label" parent="Start_UI/MarginContainer/EnemyPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enemy_score:          "
+script = ExtResource("2_rtwm6")
