@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bcut2g4c4fs41"]
+
+[ext_resource type="FontFile" uid="uid://cam88f8btdbye" path="res://Fonts/digitalix.ttf" id="1_dqq88"]
+
+[resource]
+default_font = ExtResource("1_dqq88")
+/fonts/Text = ExtResource("1_dqq88")

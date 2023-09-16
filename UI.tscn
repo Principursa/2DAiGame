@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1vqg2vqcwo4j"]
+[gd_scene load_steps=4 format=3 uid="uid://c1vqg2vqcwo4j"]
 
+[ext_resource type="Theme" uid="uid://bcut2g4c4fs41" path="res://UI_BASE.tres" id="1_5v0xa"]
 [ext_resource type="Script" path="res://P_Score.gd" id="1_7k7re"]
 [ext_resource type="Script" path="res://E_Score.gd" id="2_rtwm6"]
 
@@ -9,12 +10,11 @@ anchors_preset = 0
 
 [node name="Start_UI" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="HBoxContainer" parent="Start_UI"]
-anchors_preset = 15
+[node name="MarginContainer" type="VBoxContainer" parent="Start_UI"]
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 44.0
 grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
@@ -26,9 +26,9 @@ size_flags_vertical = 4
 [node name="P_Score" type="Label" parent="Start_UI/MarginContainer/PlayerPanel"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Player_Score:     "
+size_flags_vertical = 8
+theme = ExtResource("1_5v0xa")
+text = "Player Score:     "
 script = ExtResource("1_7k7re")
 
 [node name="EnemyPanel" type="PanelContainer" parent="Start_UI/MarginContainer"]
@@ -39,5 +39,7 @@ size_flags_vertical = 4
 [node name="E_Score" type="Label" parent="Start_UI/MarginContainer/EnemyPanel"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_5v0xa")
 text = "Enemy_score:          "
 script = ExtResource("2_rtwm6")

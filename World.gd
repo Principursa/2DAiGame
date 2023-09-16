@@ -36,6 +36,7 @@ func _ready():
 			add_child(env_pixel)
 			env_pixel.set_position(pos)
 			environ_grid[pos] = env_pixel
+			environ_grid[pos].get_node("Pixelenviron").modulate = Color(.5,.5,.9)
 			x_pos += 1
 		x_pos = base_position.x
 		y_pos += 1
@@ -118,7 +119,7 @@ func clear_grid():
 		for y in range(height):
 			var pos = Vector2(x_pos, y_pos)
 			grid[pos] = GridState.ABSENT
-			environ_grid[pos].get_node("Pixelenviron").modulate = Color(13/255.0,30/255.0,66/255.0)
+			environ_grid[pos].get_node("Pixelenviron").modulate = Color(.5,.5,.9)
 			x_pos += 1 
 		x_pos = base_position.x
 		y_pos += 1 
