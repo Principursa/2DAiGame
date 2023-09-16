@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://cysua2buxkmar"]
+[gd_scene load_steps=2 format=3 uid="uid://cysua2buxkmar"]
+
+[ext_resource type="Script" path="res://World.gd" id="1_3lm0g"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+script = ExtResource("1_3lm0g")
