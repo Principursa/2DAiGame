@@ -7,3 +7,7 @@
 [node name="TileMap" type="TileMap" parent="."]
 format = 2
 script = ExtResource("1_3lm0g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(94, 43)
+zoom = Vector2(6, 6)
