@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1vqg2vqcwo4j"]
-
-[ext_resource type="Script" path="res://Start_Button.gd" id="1_w774s"]
+[gd_scene format=3 uid="uid://c1vqg2vqcwo4j"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -18,11 +16,3 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 metadata/_edit_use_anchors_ = true
-
-[node name="Start Button" type="Button" parent="Start_UI/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-text = "Start "
-script = ExtResource("1_w774s")
-
-[connection signal="pressed" from="Start_UI/MarginContainer/Start Button" to="Start_UI/MarginContainer/Start Button" method="_on_pressed"]
