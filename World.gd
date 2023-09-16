@@ -75,8 +75,18 @@ func spawn_entities():
 	
 	
 func failure_check():
+	if player_pix.position.y == height:
+		restart(Entity.ENEMY)
+	if player_pix.position.y ==  0:
+		restart(Entity.ENEMY)
+	if player_pix.position.x == 0:
+		restart(Entity.ENEMY)
+	if player_pix.position.x == width:
+		restart(Entity.ENEMY)
 	if grid[player_pix.position] != GridState.ABSENT:
 		restart(Entity.ENEMY)
+	if grid[enemy_pix.position] != GridState.ABSENT:
+		restart(Entity.PLAYER)
 		
 
 func restart(entity: Entity):
@@ -100,7 +110,7 @@ func clear_grid():
 		for y in range(height):
 			var pos = Vector2(x_pos, y_pos)
 			grid[pos] = GridState.ABSENT
-			environ_grid[pos].get_node("Pixelenviron").modulate = Color("#0d1e42")
+			environ_grid[pos].get_node("Pixelenviron").modulate = Color(13/255.0,30/255.0,66/255.0)
 			x_pos += 1 
 		x_pos = base_position.x
 		y_pos += 1 
