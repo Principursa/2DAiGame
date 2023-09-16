@@ -5,6 +5,4 @@
 [node name="EnvironPixel" type="Node2D"]
 
 [node name="Pixelenviron" type="Sprite2D" parent="."]
-position = Vector2(5, -5)
-scale = Vector2(10, 10)
 texture = ExtResource("1_kt3h6")

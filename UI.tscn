@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1vqg2vqcwo4j"]
+
+[ext_resource type="Script" path="res://Start_Button.gd" id="1_w774s"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Start_UI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Start_UI"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="Start Button" type="Button" parent="Start_UI/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Start "
+script = ExtResource("1_w774s")
+
+[connection signal="pressed" from="Start_UI/MarginContainer/Start Button" to="Start_UI/MarginContainer/Start Button" method="_on_pressed"]

@@ -1,13 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cysua2buxkmar"]
+[gd_scene load_steps=3 format=3 uid="uid://cysua2buxkmar"]
 
 [ext_resource type="Script" path="res://World.gd" id="1_3lm0g"]
+[ext_resource type="PackedScene" uid="uid://c1vqg2vqcwo4j" path="res://UI.tscn" id="1_mg6jh"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_mg6jh")]
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 2
 script = ExtResource("1_3lm0g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(94, 43)
+position = Vector2(50, 46)
 zoom = Vector2(6, 6)
