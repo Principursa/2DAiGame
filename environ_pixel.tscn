@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsd65jdbemwpw"]
+
+[ext_resource type="Texture2D" uid="uid://daoaue0mkhvld" path="res://pixelenviron.png" id="1_kt3h6"]
+
+[node name="EnvironPixel" type="Node2D"]
+
+[node name="Pixelenviron" type="Sprite2D" parent="."]
+texture = ExtResource("1_kt3h6")
