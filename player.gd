@@ -7,7 +7,6 @@ enum Direction {
 	DOWN
 }
 var direction = Direction.UP
-var score = 0
 var prev_position
 # Called when the node enters the scene tree for the first time.
 func _ready():

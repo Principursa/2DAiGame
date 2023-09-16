@@ -22,6 +22,8 @@ enum Entity {
 }
 var player_pix
 var enemy_pix
+var player_score: int
+var enemy_score: int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var y_pos = base_position.y
@@ -34,7 +36,7 @@ func _ready():
 			add_child(env_pixel)
 			env_pixel.set_position(pos)
 			environ_grid[pos] = env_pixel
-			x_pos += 1	
+			x_pos += 1
 		x_pos = base_position.x
 		y_pos += 1
 	spawn_entities()
@@ -81,12 +83,12 @@ func restart(entity: Entity):
 	enemy_pix.queue_free()
 	player_pix.queue_free()
 	if entity == Entity.PLAYER:
-		player_pix.score += 1
-		player_score_label.update_score(player_pix.score)
+		player_score += 1 
+		player_score_label.update_score(player_score)
 
 	if entity == Entity.ENEMY:
-		enemy_pix.score += 1 
-		enemy_score_label.update_score(enemy_pix.score)
+		enemy_score += 1 
+		enemy_score_label.update_score(enemy_score) 
 
 	clear_grid()
 	spawn_entities()
