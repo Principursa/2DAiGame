@@ -22,5 +22,6 @@ autostart = true
 
 [node name="Sync" type="Node2D" parent="."]
 script = ExtResource("3_svawa")
+speed_up = 8
 
 [connection signal="timeout" from="Tick" to="TileMap" method="_on_tick_timeout"]
