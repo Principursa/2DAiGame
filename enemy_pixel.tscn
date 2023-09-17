@@ -6,7 +6,7 @@
 [node name="Enemypixel" type="Node2D" groups=["AGENT"]]
 script = ExtResource("2_yuewp")
 
-[node name="LightCycleRed2" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, 5.96046e-08)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_rvymt")

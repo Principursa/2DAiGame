@@ -158,6 +158,7 @@ func _on_tick_timeout():
 
 func player_movement():
 	var player_direction = get_player_direction()
+	var sprite = player_pix.get_node("Sprite")
 	if player_direction == player_pix.Direction.UP:
 		player_pix.position.y += -1
 		change_gridstate(player_pix.prev_position, Entity.PLAYER)
@@ -176,7 +177,7 @@ func player_movement():
 
 func enemy_movement():
 	var enemy_direction = get_enemy_direction()
-	
+	var sprite = enemy_pix.get_node("Sprite")
 	if enemy_direction == enemy_pix.Direction.UP:
 		enemy_pix.position.y += -1
 		change_gridstate(enemy_pix.prev_position, Entity.ENEMY)
