@@ -53,3 +53,9 @@ size_flags_vertical = 8
 theme = ExtResource("1_5v0xa")
 text = "Enemy_score:          "
 script = ExtResource("2_rtwm6")
+
+[node name="Reward" type="Label" parent="Start_UI/MarginContainer/EnemyPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_5v0xa")
+text = "Reward:"

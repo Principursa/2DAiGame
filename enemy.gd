@@ -10,6 +10,7 @@ var direction: Direction = Direction.UP
 var prev_position
 var MAX_STEPS = 20000
 @onready var step_label = get_node("../../Control").get_node("%Steps")
+@onready var player_ref = get_node("../Playerpixel")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	n_steps = 0
@@ -48,11 +49,12 @@ func get_action_space():
 		
 	}
 func set_action(action):
-	direction = action["direction"] == 1
+	direction = action["direction"] == 0
 func get_obs():
-	var enemy_pos = to_local(global_position)
+	var enemy_pos = global_position
+	var player_pos = player_ref.global_position
 	
-	var obs = [enemy_pos.x,enemy_pos.y]
+	var obs = [enemy_pos.x,enemy_pos.y,player_pos.x,player_pos.y]
 	
 	return {"obs": obs}
 

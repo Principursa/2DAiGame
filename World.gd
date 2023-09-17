@@ -6,6 +6,7 @@ extends TileMap
 @onready var tick = get_node("../Tick")
 @onready var player_score_label = get_node("../Control").get_node("%P_Score")
 @onready var enemy_score_label = get_node("../Control").get_node("%E_Score")
+@onready var reward_label = get_node("../Control").get_node("%Reward")
 var height = 100
 var width = 100
 var base_position = Vector2(0,0)
@@ -82,55 +83,38 @@ func spawn_entities():
 	
 func failure_check():
 	if player_pix.position.y == height:
-		enemy_pix.hide()
-		player_pix.hide()	
 		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if player_pix.position.y ==  0:
-		enemy_pix.hide()
-		player_pix.hide()
 		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if player_pix.position.x == 0:
-		enemy_pix.hide()
-		player_pix.hide()
 		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if player_pix.position.x == width:
-		enemy_pix.hide()
-		player_pix.hide()
 		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if enemy_pix.position.y == height:
-		enemy_pix.hide()
-		player_pix.hide()
 		restart(Entity.PLAYER)
 		enemy_pix.dec_reward()
 	if enemy_pix.position.y ==  0:
-		enemy_pix.hide()
-		player_pix.hide()
 		restart(Entity.PLAYER)
 		enemy_pix.dec_reward()
 	if enemy_pix.position.x == 0:
-		enemy_pix.hide()
-		player_pix.hide()
 		restart(Entity.PLAYER)
 		enemy_pix.dec_reward()
 	if enemy_pix.position.x == width:
-		enemy_pix.hide()
-		player_pix.hide()
 		restart(Entity.PLAYER)
 		enemy_pix.dec_reward()
 	if grid[player_pix.position] != GridState.ABSENT:
-		enemy_pix.hide()
-		player_pix.hide()
+
 		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if grid[enemy_pix.position] != GridState.ABSENT:
-		enemy_pix.hide()
-		player_pix.hide()
+
 		restart(Entity.PLAYER)
 		enemy_pix.dec_reward()
+	reward_label.text = "Reward:" + str(enemy_pix.reward)
 		
 
 func restart(entity: Entity):
@@ -143,7 +127,15 @@ func restart(entity: Entity):
 		enemy_score_label.update_score(enemy_score) 
 
 	clear_grid()
-	spawn_entities()
+	var halfway_h = height / 2 
+	var halfway_w = height / 2 
+	var player_pos = Vector2(halfway_h -1, halfway_w)
+	var enemy_pos = Vector2(halfway_h + 1, halfway_w)
+	enemy_pix.set_position(enemy_pos)
+	player_pix.set_position(player_pos)
+	enemy_pix.direction = enemy_pix.Direction.UP
+	player_pix.direction = player_pix.Direction.UP
+	
 	
 func clear_grid():
 	var y_pos = base_position.y
