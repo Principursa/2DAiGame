@@ -83,7 +83,7 @@ func spawn_entities():
 func failure_check():
 	if player_pix.position.y == height:
 		enemy_pix.hide()
-		player_pix.hide()
+		player_pix.hide()	
 		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if player_pix.position.y ==  0:
@@ -128,7 +128,7 @@ func failure_check():
 		restart(Entity.ENEMY)
 	if grid[enemy_pix.position] != GridState.ABSENT:
 		enemy_pix.hide()
-		player_pix.hide()x
+		player_pix.hide()
 		restart(Entity.PLAYER)
 		enemy_pix.dec_reward()
 		
