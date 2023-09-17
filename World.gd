@@ -52,7 +52,8 @@ func _process(delta):
 
 func get_player_direction():
 	return player_pix.direction		
-
+func get_enemy_direction():
+	return enemy_pix.direction
 func change_gridstate(position,entity):
 	if grid[position] == GridState.ABSENT:
 		if entity == Entity.PLAYER:
@@ -60,7 +61,7 @@ func change_gridstate(position,entity):
 			environ_grid[position].get_node("Pixelenviron").modulate = Color(1,250,1)
 		else: 
 			grid[position] = GridState.ENEMY
-			environ_grid[position].get_Node("Pixelenviron").modulate = Color(250,1,1)
+			environ_grid[position].get_node("Pixelenviron").modulate = Color(250,1,1)
 		
 	
 	
@@ -76,16 +77,21 @@ func spawn_entities():
 	player_pix.set_position(player_pos)
 	add_child(enemy_pix)
 	enemy_pix.set_position(enemy_pos)
+	enemy_pix.init(self)
 	
 	
 func failure_check():
 	if player_pix.position.y == height:
+		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if player_pix.position.y ==  0:
+		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if player_pix.position.x == 0:
+		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if player_pix.position.x == width:
+		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if enemy_pix.position.y == height:
 		restart(Entity.PLAYER)
@@ -96,6 +102,7 @@ func failure_check():
 	if enemy_pix.position.x == width:
 		restart(Entity.PLAYER)
 	if grid[player_pix.position] != GridState.ABSENT:
+		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if grid[enemy_pix.position] != GridState.ABSENT:
 		restart(Entity.PLAYER)
@@ -129,21 +136,43 @@ func clear_grid():
 			
 
 func _on_tick_timeout():
-	var direction = get_player_direction()
 	failure_check()
 	player_pix.prev_position = player_pix.position
-	if direction == player_pix.Direction.UP:
+	enemy_pix.prev_position = enemy_pix.position
+	player_movement()
+	enemy_movement()
+		
+
+func player_movement():
+	var player_direction = get_player_direction()
+	if player_direction == player_pix.Direction.UP:
 		player_pix.position.y += -1
 		change_gridstate(player_pix.prev_position, Entity.PLAYER)
-	if direction == player_pix.Direction.DOWN:
+	if player_direction == player_pix.Direction.DOWN:
 		player_pix.position.y += 1
 		change_gridstate(player_pix.prev_position, Entity.PLAYER)
 
-	if direction == player_pix.Direction.LEFT:
+	if player_direction == player_pix.Direction.LEFT:
 		player_pix.position.x += -1
 		change_gridstate(player_pix.prev_position, Entity.PLAYER)
 
-	if direction == player_pix.Direction.RIGHT:
+	if player_direction == player_pix.Direction.RIGHT:
 		player_pix.position.x += 1	
 		change_gridstate(player_pix.prev_position, Entity.PLAYER)
 		
+
+func enemy_movement():
+	var enemy_direction = get_enemy_direction()
+	
+	if enemy_direction == enemy_pix.Direction.UP:
+		enemy_pix.position.y += -1
+		change_gridstate(enemy_pix.prev_position, Entity.ENEMY)
+	if enemy_direction == enemy_pix.Direction.DOWN:
+		enemy_pix.position.y += 1
+		change_gridstate(enemy_pix.prev_position, Entity.ENEMY)
+	if enemy_direction == enemy_pix.Direction.LEFT:
+		enemy_pix.position.x += -1
+		change_gridstate(enemy_pix.prev_position, Entity.ENEMY)
+	if enemy_direction == enemy_pix.Direction.RIGHT:
+		enemy_pix.position.x += -1
+		change_gridstate(enemy_pix.prev_position, Entity.ENEMY)
