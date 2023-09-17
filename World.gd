@@ -63,10 +63,8 @@ func change_gridstate(position,entity):
 		else: 
 			grid[position] = GridState.ENEMY
 			environ_grid[position].get_node("Pixelenviron").modulate = Color(250,1,1)
-		
-	
-	
-	
+
+
 func spawn_entities():
 	var halfway_h = height / 2 
 	var halfway_w = height / 2 

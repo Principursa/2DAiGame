@@ -1,10 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://btsa3fw2ko58a"]
 
-[ext_resource type="Texture2D" uid="uid://y6ip8ifnxjq" path="res://enemypixel.png" id="1_ia74a"]
+[ext_resource type="Texture2D" uid="uid://c7qge7cr75h8x" path="res://Light_Cycle_red2.png" id="2_rvymt"]
 [ext_resource type="Script" path="res://enemy.gd" id="2_yuewp"]
 
 [node name="Enemypixel" type="Node2D" groups=["AGENT"]]
 script = ExtResource("2_yuewp")
 
-[node name="Enemypixel" type="Sprite2D" parent="."]
-texture = ExtResource("1_ia74a")
+[node name="LightCycleRed2" type="Sprite2D" parent="."]
+position = Vector2(0, 5.96046e-08)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_rvymt")
