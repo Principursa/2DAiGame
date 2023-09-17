@@ -82,35 +82,58 @@ func spawn_entities():
 	
 func failure_check():
 	if player_pix.position.y == height:
+		enemy_pix.hide()
+		player_pix.hide()
 		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if player_pix.position.y ==  0:
+		enemy_pix.hide()
+		player_pix.hide()
 		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if player_pix.position.x == 0:
+		enemy_pix.hide()
+		player_pix.hide()
 		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if player_pix.position.x == width:
+		enemy_pix.hide()
+		player_pix.hide()
 		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if enemy_pix.position.y == height:
+		enemy_pix.hide()
+		player_pix.hide()
 		restart(Entity.PLAYER)
+		enemy_pix.dec_reward()
 	if enemy_pix.position.y ==  0:
+		enemy_pix.hide()
+		player_pix.hide()
 		restart(Entity.PLAYER)
+		enemy_pix.dec_reward()
 	if enemy_pix.position.x == 0:
+		enemy_pix.hide()
+		player_pix.hide()
 		restart(Entity.PLAYER)
+		enemy_pix.dec_reward()
 	if enemy_pix.position.x == width:
+		enemy_pix.hide()
+		player_pix.hide()
 		restart(Entity.PLAYER)
+		enemy_pix.dec_reward()
 	if grid[player_pix.position] != GridState.ABSENT:
+		enemy_pix.hide()
+		player_pix.hide()
 		enemy_pix.inc_reward()
 		restart(Entity.ENEMY)
 	if grid[enemy_pix.position] != GridState.ABSENT:
+		enemy_pix.hide()
+		player_pix.hide()x
 		restart(Entity.PLAYER)
+		enemy_pix.dec_reward()
 		
 
 func restart(entity: Entity):
-	enemy_pix.queue_free()
-	player_pix.queue_free()
 	if entity == Entity.PLAYER:
 		player_score += 1 
 		player_score_label.update_score(player_score)

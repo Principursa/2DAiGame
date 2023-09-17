@@ -8,7 +8,7 @@ enum Direction {
 }
 var direction: Direction = Direction.UP
 var prev_position
-var MAX_STEPS = 20000
+var MAX_STEPS = 200
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	n_steps = 0
@@ -21,6 +21,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	n_steps +=1    
+	if n_steps >= MAX_STEPS:
+		done = true
+		needs_reset = true
+
+	if needs_reset:
+		needs_reset = false
+		reset()
+		return
+
 	pass
 
 func inc_reward():
@@ -51,3 +61,6 @@ func get_done():
 	return done
 func set_done_false():
 	done = false
+func reset():
+	needs_reset = false
+	n_steps = 0
